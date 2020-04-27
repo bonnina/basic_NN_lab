@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using System.Text;
+using ConsoleTableExt;
 
 
 namespace basic_NN_keras.net
@@ -48,6 +50,28 @@ namespace basic_NN_keras.net
 
                 i++;
             }
+        }
+
+        public void Print()
+        {
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Neurons");
+            dt.Columns.Add("Weight");
+
+            foreach (var element in Layers)
+            {
+                DataRow row = dt.NewRow();
+                row[0] = element.Name;
+                row[1] = element.Neurons.Count;
+                row[2] = element.Weight;
+
+                dt.Rows.Add(row);
+            }
+
+            ConsoleTableBuilder builder = ConsoleTableBuilder.From(dt);
+            builder.ExportAndWrite();
         }
 
         private void CreateNetwork(NeuralLayer connectingFrom, NeuralLayer connectingTo)
