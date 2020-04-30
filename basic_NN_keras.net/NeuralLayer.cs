@@ -36,5 +36,13 @@ namespace basic_NN_keras.net
         {
             Console.WriteLine("{0}, Weight: {1}", Name, Weight);
         }
+
+        public void Forward()
+        {
+            foreach (var neuron in Neurons)
+            {
+                neuron.Fire();
+            }
+        }
     }
 }
