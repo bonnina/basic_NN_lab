@@ -20,6 +20,7 @@ namespace basic_NN_keras.net
             OutputPulse = new Pulse();
         }
 
+        // forward the input pulse to the next layer
         public void Fire()
         {
             OutputPulse.Value = Sum();
