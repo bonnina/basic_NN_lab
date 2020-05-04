@@ -53,5 +53,13 @@ namespace basic_NN_keras.net
             double threshold = 1;
             return input >= threshold ? 0 : threshold;
         }
+
+        public void UpdateWeights(double new_weights)
+        {
+            foreach (var terminal in Dendrites)
+            {
+                terminal.SynapticWeight = new_weights;
+            }
+        }
     }
 }

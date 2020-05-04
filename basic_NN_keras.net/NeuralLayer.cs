@@ -37,6 +37,16 @@ namespace basic_NN_keras.net
             Console.WriteLine("{0}, Weight: {1}", Name, Weight);
         }
 
+        public void Optimize(double learningRate, double delta)
+        {
+            Weight += learningRate * delta;
+
+            foreach (var neuron in Neurons)
+            {
+                neuron.UpdateWeights(Weight);
+            }
+        }
+
         public void Forward()
         {
             foreach (var neuron in Neurons)
