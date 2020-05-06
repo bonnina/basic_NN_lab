@@ -84,5 +84,43 @@ namespace basic_NN_keras.net
                 }
             }
         }
+
+        private void ComputeOutput()
+        {
+            bool first = true;
+            foreach (var layer in Layers)
+            {
+                //Skip first (input) layer
+                if (first)
+                {
+                    first = false;
+                    continue;
+                }
+
+                layer.Forward();
+            }
+        }
+
+        private void OptimizeWeights(double accuracy)
+        {
+            float lr = 0.1f;
+
+            //Skip if the accuracy reached 100%
+            if (accuracy == 1)
+            {
+                return;
+            }
+
+            if (accuracy > 1)
+            {
+                lr = -lr;
+            }
+
+            //Update the weights for all the layers
+            foreach (var layer in Layers)
+            {
+                layer.Optimize(lr, 1);
+            }
+        }
     }
 }
