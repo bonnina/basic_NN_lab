@@ -4,13 +4,19 @@ namespace basic_NN_keras.net
 {
     class Dendrite
     {
-        // input signal
+        /// <summary>
+        /// input signal
+        /// </summary>
         public Pulse InputPulse { get; set; }
 
-        // connection strength between the dendrite and synapsis of two neurons
+        /// <summary>
+        /// connection strength between the dendrite and synapsis of two neurons
+        /// </summary>
         public double SynapticWeight { get; set; }
 
-        // bool used during training to adjust the SynapticWeight value
+        /// <summary>
+        /// bool used during training to adjust the SynapticWeight value
+        /// </summary>
         public bool Learnable { get; set; } = true;
     }
 }
